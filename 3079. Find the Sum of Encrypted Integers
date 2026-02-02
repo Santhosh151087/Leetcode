@@ -1,0 +1,28 @@
+class Solution {
+    public int encrypt(int n){
+        if(n<10)
+        return n;
+        int max = Integer.MIN_VALUE;
+        int place = 0;
+        int ans =0;
+        while(n>0){
+            max = Math.max(max,n%10);
+            n/=10;
+            place++;
+        }
+        //  System.out.println(max);
+        while(place>0){
+            ans = (ans*10) + max;
+            place--;
+        }
+        return ans;
+    }
+    public int sumOfEncryptedInt(int[] nums) {
+        int ans = 0;
+        for(int n:nums){
+            // System.out.println(encrypt(n));
+            ans +=encrypt(n);
+        }
+        return ans;
+    }
+}
