@@ -1,0 +1,19 @@
+class Solution {
+    public int rearrangeCharacters(String s, String target) {
+        int [] arr = new int [26];
+        for(char c:s.toCharArray()){
+            arr[c-'a']++;
+        }
+        int count=0;
+        while(true){
+            for(char c:target.toCharArray()){
+                if(arr[c-'a']==0)
+                return count;
+                else
+                arr[c-'a']--;
+            }
+            count++;
+        }
+        // return count;
+    }
+}
