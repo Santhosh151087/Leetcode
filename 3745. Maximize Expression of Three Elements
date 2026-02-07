@@ -1,0 +1,19 @@
+class Solution {
+    public int maximizeExpressionOfThree(int[] nums) {
+        int firstMax = Integer.MIN_VALUE;
+        int secondMax = Integer.MIN_VALUE;
+        int min = Integer.MAX_VALUE;
+        for(int n:nums){
+            if(n>firstMax){
+                secondMax = firstMax;
+                firstMax = n;
+            }
+            else if(n>secondMax){
+                secondMax = n;
+            }
+            min = Math.min(n, min);
+
+        }
+        return firstMax+secondMax-min;
+    }
+}
