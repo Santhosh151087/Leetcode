@@ -1,0 +1,14 @@
+class Solution {
+    
+    public int maxDistinct(String s) {
+        int [] arr = new int[26];
+        int count=0;
+        for(char c : s.toCharArray()){
+            int i = c - 'a';
+            if(arr[i]==0)
+            count++;
+            arr[i]++;
+        }
+        return count;
+    }
+}
