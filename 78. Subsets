@@ -1,0 +1,21 @@
+class Solution {
+    List<List<Integer>> ans ;
+    public void find(int [] nums , int ind , int len , List<Integer> list){
+        if(ind>= len){
+            ans.add(new ArrayList<> (list));
+            return ;
+        }
+        list.add(nums[ind]);
+        find(nums , ind+1 , len , list);
+        list.remove(list.size()-1);
+        find(nums , ind+1 , len , list);
+
+    }
+    public List<List<Integer>> subsets(int[] nums) {
+        ans = new ArrayList<>();
+        int len = nums.length;
+        List<Integer> list = new ArrayList<>(); 
+        find(nums , 0 , len,list);
+        return ans;
+    }
+}
