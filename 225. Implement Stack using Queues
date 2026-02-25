@@ -1,0 +1,20 @@
+class MyStack {
+
+    Deque<Integer> deque = new ArrayDeque<>();
+    
+    public void push(int x) {
+        deque.addLast(x);
+    }
+    
+    public int pop() {
+        return deque.removeLast();
+    }
+    
+    public int top() {
+        return deque.peekLast();
+    }
+    
+    public boolean empty() {
+        return deque.isEmpty();
+    }
+}
