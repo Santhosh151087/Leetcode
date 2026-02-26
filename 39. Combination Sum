@@ -1,0 +1,22 @@
+class Solution {
+    public void fnc(int [] arr , int target , int ind ,  List<List<Integer>> ans , List<Integer> list ,int len){
+        if(ind==len){
+            if(target==0)
+            ans.add(new ArrayList<Integer> (list));
+            return;
+        }
+        if(arr[ind]<=target){
+            list.add(arr[ind]);
+            fnc(arr , target-arr[ind],ind , ans , list , len);
+            list.remove(list.size()-1);
+        }
+        fnc(arr , target ,ind+1 , ans,list,len);
+    }
+    public List<List<Integer>> combinationSum(int[] arr, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        List<Integer> list = new ArrayList<>();
+        
+        fnc(arr , target , 0 , ans ,list,arr.length );
+        return ans;
+    }
+}
