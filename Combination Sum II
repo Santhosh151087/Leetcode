@@ -1,0 +1,33 @@
+class Solution {
+    List<Integer> list = new ArrayList<>();
+
+    public void com(int[] arr, int target, int i, int len, List<List<Integer>> ans) {
+
+        if (target == 0) {
+
+            ans.add(new ArrayList<>(list));
+            return;
+        }
+
+        for (int j = i; j < len; j++) {
+            if (j > i && arr[j] == arr[j - 1])
+                continue;
+            if (target < arr[j])
+                break;
+            list.add(arr[j]);
+            com(arr, target-arr[j], j + 1, len, ans);
+            list.remove(list.size() - 1);
+
+        }
+    }
+
+    public List<List<Integer>> combinationSum2(int[] arr, int target) {
+        List<List<Integer>> ans = new ArrayList<>();
+        Arrays.sort(arr);
+        int len = arr.length;
+
+        com(arr, target, 0, len, ans);
+
+        return ans;
+    }
+}
