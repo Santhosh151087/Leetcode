@@ -1,0 +1,62 @@
+class Solution {
+    public List<Integer> majorityElement(int[] nums) {
+        int n1 = Integer.MIN_VALUE;
+        int n2 = Integer.MIN_VALUE;
+        int n3 = Integer.MIN_VALUE;
+     
+        int n1C = 0;
+        int n2C = 0;
+        int n3C = 0;
+        for(int n:nums){
+            if(n1C==0 && n2!=n && n3!=n){
+                n1C = 1;
+                n1 = n;
+            }
+            else if(n2C==0 && n3!=n && n1!=n){
+                n2C=1;
+                n2 = n;
+            }
+             else if(n3C==0 && n2!=n && n1!=n){
+                n3C=1;
+                n3 = n;
+            }
+            else if(n1==n){
+                n1C++;
+            }
+            else if(n2==n){
+                n2C++;
+            }
+            else if(n3==n){
+                n3C++;
+            }
+            else{
+                n1C--;
+                n2C--;
+                n3C--;
+            }
+        }
+        List<Integer> list  = new ArrayList<>();
+        int conform1 = 0;
+        int conform2 = 0;
+        int conform3 = 0;
+        for(int n:nums){
+            if(n==n1)
+            conform1++;
+            else if(n==n2)
+            conform2++;
+            else if(n==n3)
+            conform3++;
+        }
+        int len = nums.length/3;
+        // System.out.println(n1+" "+n2+" "+n3+" "+len);
+        if(conform1>len)
+        list.add(n1);
+        if(conform2>len)
+        list.add(n2); 
+        if(conform3>len)
+        list.add(n3);
+
+return list;
+
+    }
+}
